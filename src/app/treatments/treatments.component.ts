@@ -15,11 +15,11 @@ import {
   Observable,
   shareReplay,
 } from 'rxjs';
-import { Treatment } from './treatment.model';
+import { Treatment } from './model/treatment.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { matchSearchPattern } from './customValidator';
-import { TreatmentsService } from './treatments.service';
+import { TreatmentsService } from './service/treatments.service';
+import { matchSearchPattern } from './validator/customValidator';
 
 @Component({
   selector: 'app-treatments',

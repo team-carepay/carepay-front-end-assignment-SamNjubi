@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, finalize, Observable, shareReplay } from 'rxjs';
-import { Treatment } from './treatment.model';
+import { BehaviorSubject, Observable, shareReplay } from 'rxjs';
+import { Treatment } from '../model/treatment.model';
 
 @Injectable({
   providedIn: 'root'
