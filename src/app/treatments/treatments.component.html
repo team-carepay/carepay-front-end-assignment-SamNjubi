@@ -10,6 +10,7 @@
             class="form-control py-2 border-right-0 border"
             type="search"
             formControlName="search"
+            name="search"
             id="treatment-search-input"
             placeholder="Search for a treatment by its code" />
           <span class="input-group-text">
@@ -36,7 +37,7 @@
         filterForm.controls['search'].touched)
     "
     class="text-danger mt-2 ms-3">
-    <small>
+    <small class="search-error">
       A proper code is required containing atleast 3 similar characters
     </small>
   </div>
