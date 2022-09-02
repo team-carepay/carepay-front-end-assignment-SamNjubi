@@ -1,14 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { TreatmentsComponent } from './treatments/treatments.component';
 
 describe('AppComponent', () => {
+
+  let router: Router;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule.withRoutes([
+        { path: 'treatments', component: TreatmentsComponent }
+      ])],
       declarations: [AppComponent],
     }).compileComponents();
   });
+  beforeEach(() => {
+    router = TestBed.get(Router);
+  })
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -21,13 +31,17 @@ describe('AppComponent', () => {
     const app = fixture.componentInstance;
     expect(app.title).toEqual('carepay-front-end-assignment');
   });
-
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'carepay-front-end-assignment app is running!'
+    expect(compiled.querySelector('h3')?.textContent).toContain(
+      'Carepay assignment'
     );
   });
+  it('should render treatments component', fakeAsync(() => {
+    router.navigate(['/treatments']);
+    tick();
+    expect(router.url).toBe('/treatments');
+  }))
 });

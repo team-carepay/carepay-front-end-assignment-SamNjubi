@@ -1,4 +1,4 @@
-import { Component, OnInit, TrackByFunction } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -6,22 +6,20 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import {
   BehaviorSubject,
   debounceTime,
   distinctUntilChanged,
   finalize,
-  map,
   Observable,
   shareReplay,
-  tap,
 } from 'rxjs';
 import { Treatment } from './treatment.model';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { matchSearchPattern } from './customValidator';
+import { TreatmentsService } from './treatments.service';
 
 @Component({
   selector: 'app-treatments',
@@ -33,6 +31,7 @@ import { matchSearchPattern } from './customValidator';
     HttpClientModule,
     ReactiveFormsModule,
   ],
+  providers: [TreatmentsService],
   templateUrl: './treatments.component.html',
   styleUrls: ['./treatments.component.scss'],
 })
@@ -47,7 +46,8 @@ export class TreatmentsComponent implements OnInit {
     private http: HttpClient,
     private fb: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private treatmentService: TreatmentsService
   ) {
     this.filterForm = fb.group({
       search: new FormControl(null, [matchSearchPattern()]),
@@ -92,8 +92,8 @@ export class TreatmentsComponent implements OnInit {
         })
         .unsubscribe();
     }
-    this.treatments$ = this.http
-      .get<Treatment[]>(treatmentsUrl, { params: this.queryfilters })
+
+    this.treatments$ = this.treatmentService.fetchTreatments(this.queryfilters)
       .pipe(
         finalize(() => (this.loading = false)),
         shareReplay()
