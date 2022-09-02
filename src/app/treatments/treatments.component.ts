@@ -93,7 +93,8 @@ export class TreatmentsComponent implements OnInit {
         .unsubscribe();
     }
 
-    this.treatments$ = this.treatmentService.fetchTreatments(this.queryfilters)
+    this.treatments$ = this.treatmentService
+      .fetchTreatments(this.queryfilters)
       .pipe(
         finalize(() => (this.loading = false)),
         shareReplay()

@@ -22,7 +22,9 @@ describe('TreatmentsComponent', () => {
 
   it('should render the form inputs', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const searchInput = compiled.querySelector('input[id="treatment-search-input"]');
+    const searchInput = compiled.querySelector(
+      'input[id="treatment-search-input"]'
+    );
     expect(searchInput).toBeTruthy();
   });
 
@@ -42,8 +44,9 @@ describe('TreatmentsComponent', () => {
 
   it('should render the table', () => {
     const compiled = fixture.nativeElement as HTMLElement;
-    const treatmentsTable = compiled.querySelector('table[id="treatments-table"]');
+    const treatmentsTable = compiled.querySelector(
+      'table[id="treatments-table"]'
+    );
     expect(treatmentsTable).toBeTruthy();
   });
-
 });

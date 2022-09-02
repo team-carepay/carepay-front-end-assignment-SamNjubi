@@ -5,20 +5,21 @@ import { AppComponent } from './app.component';
 import { TreatmentsComponent } from './treatments/treatments.component';
 
 describe('AppComponent', () => {
-
   let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule.withRoutes([
-        { path: 'treatments', component: TreatmentsComponent }
-      ])],
+      imports: [
+        RouterTestingModule.withRoutes([
+          { path: 'treatments', component: TreatmentsComponent },
+        ]),
+      ],
       declarations: [AppComponent],
     }).compileComponents();
   });
   beforeEach(() => {
     router = TestBed.get(Router);
-  })
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -43,5 +44,5 @@ describe('AppComponent', () => {
     router.navigate(['/treatments']);
     tick();
     expect(router.url).toBe('/treatments');
-  }))
+  }));
 });
