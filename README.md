@@ -1,27 +1,24 @@
-# CarepayFrontEndAssignment
+# CarePay Front-End Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+## Task description
 
-## Development server
+Create a new simple Angular 2+ application. This application should include one page with a search input field and a table with treatments of patients. The search input can be used to filter treatments by treatment code.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To reduce load on the API, the front-end should wait for the user to stop typing before making an API request.
 
-## Code scaffolding
+Treatments must be retrieved by using fake REST API (https://github.com/typicode/json-server). You can find `db.json` file in the repository.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Search field validation:
 
-## Build
+- Treatment code must include at least three identical letters, regardless of order. For example, treatment codes "aaa", "aa2a" and
+  "zz222z" are valid, while "aabbcc" is not.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+**Treat the project as if it would go in production when you are done. So please make sure to unit test the application
+properly, but also think about the application structure, maintainability, readability, and code quality.**
 
-## Running unit tests
+If there are any points that are not clear from this task, you can make assumptions. Assumption that are vital to the
+understanding of the solution can be written down in an .md file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Handing in
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Please do all the work in a branch `develop`, and open a Pull request from `develop` to `main` when you are done.
