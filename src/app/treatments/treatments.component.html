@@ -79,7 +79,7 @@
         class="cursor-pointer">
         <td scope="row">{{ treatment.treatmentCode }}</td>
         <td>{{ treatment.patient }}</td>
-        <td>{{ treatment.treatmentDate }}</td>
+        <td>{{ treatment.treatmentDate | date: 'medium' }}</td>
       </tr>
     </tbody>
   </table>
